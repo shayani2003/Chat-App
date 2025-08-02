@@ -1,0 +1,7 @@
+1> Create npm project
+2> Create html, css, js, file
+3> Install dependancies. express, nodemon
+4> Create a express server(Server.js)
+5> forntend part
+6> INstall socket.io, setup socket.io in server.js and client.js
+7> client message logic in client.js 
