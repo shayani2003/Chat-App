@@ -5,21 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talking</title>
     <link rel="stylesheet" href="/style.css">
+    <!-- Dark Mode Toggle Button -->
+<button id="darkModeToggle" class="toggle-btn">🌙</button>
+
+
 </head>
 <body>
     <section class="chat_section">
         <div class="brand">
-            <img height="40" src="/background.png" alt="">
+            <img src="/background.png" style="width:40px; height: 40px; border-radius: 50%; object-fit: cover;" alt="">
             <h1>Talking</h1>
         </div>
-        <div class="message_area">
-           
-        </div>
-        <div>
-            <textarea id="textarea" cols="30" rows="1" placeholder="Write a message..."></textarea>
+
+        <div class="message_area"></div>
+
+        <!-- Input & Button -->
+        <div class="input_container">
+            <textarea id="textarea" placeholder="Write a message..."></textarea>
+            <button id="sendBtn">Send</button>
         </div>
     </section>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="/client.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -2,52 +2,52 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
-body{
+body {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background: #F8F8F8;
+   
 }
 
-section.chat_section{
+section.chat_section {
     width: 800px;
     max-width: 90%;
     background: #fff;
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
-}
-.brand{
-    padding: 20px;
-    background: #f1f1f1;
-    display: flex;
-    align-items: center;
-}
-
-.brand h1{
-    text-transform: uppercase;
-    font-size: 20px;
-    color: #444;
-    margin-left: 10px;
-}
-
-/* .message_area{
-    height: 500px;
-    padding: 16px;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    padding-top: 40px;
-} */
-textarea{
-    width: 100%;
-    border: none;
-    padding: 20px;
-    font-size: 16px;
-    outline: none;
-    background: #FBFBFB;
+    
 }
+
+.brand {
+    padding: 20px;
+    background: linear-gradient(45deg, #7687e1,rgb(232, 146, 240)) ;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+}
+
+
+
+.brand {
+    padding: 20px;
+    background: linear-gradient(45deg, #7687e1, rgb(232, 146, 240));
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0; /* no curve where it meets message area */
+    border-bottom-right-radius: 0;
+}
+
 .message_area {
     height: 500px;
     padding: 16px;
@@ -55,7 +55,14 @@ textarea{
     flex-direction: column;
     overflow-y: auto;
     gap: 15px;
+    background: white;
+    border-top-left-radius: 0; /* no curve where it meets brand area */
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
 
 .message {
     max-width: 60%;
@@ -68,10 +75,8 @@ textarea{
     margin-bottom: 25px;
     margin-top: 40px;
     padding: 20px;
-    /* line-height: 1.4; */
 }
 
-/* Incoming message - Left side */
 .incoming {
     align-self: flex-start;
     background: #e2e2f0;
@@ -79,7 +84,6 @@ textarea{
     border-bottom-left-radius: 0;
 }
 
-/* Outgoing message - Right side */
 .outgoing {
     align-self: flex-end;
     background: #8f74f3;
@@ -88,10 +92,120 @@ textarea{
     margin-left: auto;
 }
 
-.message h4{
+.message h4 {
     position: absolute;
     top: -20px;
     left: 0;
     color: #333;
     font-size: 14px;
+}
+
+/* Input container with send button always right */
+.input_container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: #FBFBFB;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#textarea {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    outline: none;
+    background: #FBFBFB;
+    resize: none;
+    border-radius: 8px;
+    margin-right: 8px;
+}
+
+#sendBtn {
+    background: #917ae2;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+#sendBtn:hover {
+    background: #7c63d9;
+}
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+    .chat_section {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .message_area {
+        height: calc(100vh - 140px);
+    }
+
+    .input_container {
+        flex-direction: row;
+    }
+
+    #textarea {
+        font-size: 14px;
+    }
+}
+/* Default light mode */
+body {
+    background-color: #f4f4f4;
+    color: #000;
+    font-family: Arial, sans-serif;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Chat container */
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 10px;
+    background: white;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Toggle Button Style */
+.toggle-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #333;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background: #555;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+body.dark-mode .chat-container {
+    background: #2c2c2c;
+}
+
+body.dark-mode .toggle-btn {
+    background: #ddd;
+    color: #000;
 }
