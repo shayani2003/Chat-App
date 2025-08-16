@@ -7,6 +7,8 @@ It allows users to communicate instantly by opening the app in different browser
 
 This project demonstrates how to use WebSockets for real-time communication and includes modern features such as a dark mode toggle and a responsive UI.
 
+<img src="public/photo3.jpg">
+
 ---
 
 ### 🚀 Features
