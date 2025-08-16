@@ -1,6 +1,6 @@
 # 💬 Talking - Real-time Chat Application  
 
-<img src="img/Screenshot (598).png">
+<img src="public/photo1.jpg">
 
 This is a simple real-time chat application built using **Node.js**, **Express**, and **Socket.IO**.  
 It allows users to send and receive messages instantly between different browsers or tabs on the same computer.  
@@ -17,9 +17,9 @@ It allows users to send and receive messages instantly between different browser
 ---
 
 ## 🖼️ Preview  
-Here’s how the chat looks in action:  
+Here’s how the chat looks in different browser:  
 
-<img src="img/Screenshot (598).png">
+<img src="public/photo2.png">
 
 
 ---
