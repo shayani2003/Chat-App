@@ -1,3 +1,5 @@
+
+
 const socket = io();
 let name;
 let textarea = document.querySelector('#textarea');
@@ -8,15 +10,16 @@ do {
     name = prompt('Please enter your name: ');
 } while (!name);
 
-// Send message when pressing Enter (without Shift)
+socket.emit('new-user-joined', name);   // 🔹 tell server new user joined
+
+// Send message when pressing Enter
 textarea.addEventListener('keyup', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault(); // prevent newline
+        e.preventDefault();
         sendMessage(e.target.value);
     }
 });
 
-// Send message when clicking Send button
 sendBtn.addEventListener('click', () => {
     if (textarea.value.trim() !== '') {
         sendMessage(textarea.value);
@@ -33,28 +36,49 @@ function sendMessage(message) {
     textarea.value = '';
     scrollToBottom();
 
-    // send to server
     socket.emit('message', msg);
 }
 
 function appendMessage(msg, type) {
     let mainDiv = document.createElement('div');
-    mainDiv.classList.add(type, 'message');
 
-    let markup = `
-        <h4>${msg.user}</h4>
-        <p>${msg.message}</p>
-    `;
-    mainDiv.innerHTML = markup;
+    if (msg.user === "System") {
+        // 🔹 System message (user joined/left)
+        mainDiv.classList.add("system-message");
+        mainDiv.innerHTML = `<p>${msg.message}</p>`;
+    } else {
+        mainDiv.classList.add(type, 'message');
+
+        // Timestamp
+        let time = new Date();
+        let hours = time.getHours();
+        let minutes = time.getMinutes();
+        let ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        let formattedTime = `${hours}:${minutes < 10 ? '0' + minutes : minutes} ${ampm}`;
+
+        let markup = `
+            <h4>${msg.user}</h4>
+            <p>${msg.message}</p>
+            <span class="timestamp">${formattedTime}</span>
+        `;
+        mainDiv.innerHTML = markup;
+    }
+
     messageArea.appendChild(mainDiv);
 }
 
-// receive messages
+// Receive message
 socket.on('message', (msg) => {
-    appendMessage(msg, 'incoming');
+    if (msg.user === "System") {
+        appendMessage(msg, "system");
+    } else {
+        appendMessage(msg, "incoming");
+    }
     scrollToBottom();
 });
 
 function scrollToBottom() {
     messageArea.scrollTop = messageArea.scrollHeight;
 }
+
