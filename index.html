@@ -1,33 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talking</title>
-    <link rel="stylesheet" href="/style.css">
-    <!-- Dark Mode Toggle Button -->
-<button id="darkModeToggle" class="toggle-btn">🌙</button>
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Talking - Chat App</title>
+
+    <link
+        rel="stylesheet"
+        href="/style.css"
+    >
 
 </head>
+
+
 <body>
-    <section class="chat_section">
-        <div class="brand">
-            <img src="/background.png" style="width:40px; height: 40px; border-radius: 50%; object-fit: cover;" alt="">
-            <h1>Talking</h1>
+
+<section class="chat_section">
+
+
+    <!-- HEADER -->
+
+    <header class="brand">
+
+        <div class="brand_left">
+
+            <img
+                src="/background.png"
+                alt="Talking logo"
+            >
+
+            <div>
+
+                <h1>Talking</h1>
+
+                <span id="connectionStatus">
+                    Connecting...
+                </span>
+
+            </div>
+
         </div>
 
-        <div class="message_area"></div>
 
-        <!-- Input & Button -->
-        <div class="input_container">
-            <textarea id="textarea" placeholder="Write a message..."></textarea>
-            <button id="sendBtn">Send</button>
-        </div>
-    </section>
+        <button
+            id="darkModeToggle"
+            class="toggle-btn"
+        >
+            🌙
+        </button>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/client.js"></script>
-    <script src="script.js"></script>
+    </header>
+
+
+
+    <div class="chat_layout">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+
+            <!-- ONLINE USERS -->
+
+            <div class="sidebar_section">
+
+                <h3>
+                    Online Users
+
+                    <span id="onlineCount">
+                        0
+                    </span>
+                </h3>
+
+
+                <div
+                    id="userList"
+                    class="user_list"
+                ></div>
+
+            </div>
+
+
+
+            <!-- GROUPS -->
+
+            <div class="sidebar_section groups_section">
+
+                <div class="section_title">
+
+                    <h3>Groups</h3>
+
+                    <button
+                        id="createGroupBtn"
+                        title="Create group"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="groupList"
+                    class="group_list"
+                ></div>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- CHAT -->
+
+        <main class="chat_main">
+
+
+            <!-- CHAT HEADER -->
+
+            <div class="chat_header">
+
+                <div>
+
+                    <h2 id="chatTitle">
+                        General
+                    </h2>
+
+                    <span id="chatSubtitle">
+                        Group chat
+                    </span>
+
+                </div>
+
+
+                <span id="typingIndicator"></span>
+
+            </div>
+
+
+
+            <!-- MESSAGES -->
+
+            <div class="message_area"></div>
+
+
+
+            <!-- INPUT -->
+
+            <div class="input_container">
+
+                <textarea
+                    id="textarea"
+                    maxlength="1000"
+                    placeholder="Write a message..."
+                ></textarea>
+
+
+                <button id="sendBtn">
+                    Send
+                </button>
+
+            </div>
+
+
+            <div class="character_count">
+
+                <span id="characterCount">
+                    0
+                </span>
+
+                /1000
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+</section>
+
+
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="/client.js"></script>
+
+<script src="/script.js"></script>
+
 </body>
+
 </html>
